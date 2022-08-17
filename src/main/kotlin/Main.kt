@@ -1,3 +1,5 @@
 fun main(args: Array<String>) {
-    println("Hello, Harshad!")
+    print("Your name: ")
+    val name = readln()
+    println("Hello, $name!")
 }
