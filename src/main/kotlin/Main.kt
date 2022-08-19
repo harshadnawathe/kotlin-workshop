@@ -1,5 +1,6 @@
 fun main(args: Array<String>) {
     print("Your name: ")
-    val name = readln()
-    println("Hello, $name${"!".repeat(name.length)}")
+    val name = readlnOrNull()
+    val nameLength = name?.length ?: 0
+    println("Hello, $name${"!".repeat(nameLength)}")
 }
