@@ -5,7 +5,7 @@ fun main(args: Array<String>) {
         val nameLength = name.length
         print("Hello", name, nameLength)
     } else {
-        println("Hi")
+        print("Hi", "Stranger", 0)
     }
 }
 
