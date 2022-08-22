@@ -1,5 +1,7 @@
 package com.ledgerco.lending.domain
 
+import kotlin.math.ceil
+
 class Loan(
     val principleAmount: Int,
     val periodInYears: Int,
@@ -7,5 +9,5 @@ class Loan(
 ) {
     fun interest() = (principleAmount * periodInYears * rateOfInterest) / 100.0
     fun totalAmount() = principleAmount + interest()
-
+    fun emi() = ceil(totalAmount() / (periodInYears * 12)).toInt()
 }
