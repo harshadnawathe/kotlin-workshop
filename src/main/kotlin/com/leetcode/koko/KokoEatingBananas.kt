@@ -3,7 +3,7 @@ package com.leetcode.koko
 class KokoEatingBananas {
 
     fun minEatingSpeed(piles: IntArray, h: Int): Int {
-        return linearSearch(piles, h)!!
+        return binarySearch(piles, h)!!
     }
 
     private fun linearSearch(piles: IntArray, h: Int): Int? {
@@ -11,6 +11,27 @@ class KokoEatingBananas {
             val time = timeToEatAll(piles, currSpeed)
             if (time == h) {
                 return time
+            }
+        }
+        return null
+    }
+
+    private fun binarySearch(piles: IntArray, h: Int) : Int? {
+        var left = 1
+        var right = piles.max()
+
+        while (left < right) {
+            val currSpeed = (left + right) / 2
+
+            val time = timeToEatAll(piles, currSpeed)
+            if(time == h) {
+                return time
+            }
+
+            if(time < h) {
+                left = currSpeed + 1
+            } else {
+                right = currSpeed
             }
         }
         return null
