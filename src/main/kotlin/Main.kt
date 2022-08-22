@@ -3,8 +3,12 @@ fun main(args: Array<String>) {
     val name = readlnOrNull()
     if(name != null) {
         val nameLength = name.length
-        println("Hello, $name${"!".repeat(nameLength)}")
+        print("Hello", name, nameLength)
     } else {
         println("Hi")
     }
+}
+
+fun print(greeting: String, name: String, excitationLevel: Int) {
+    println("$greeting, $name${"!".repeat(excitationLevel)}")
 }
