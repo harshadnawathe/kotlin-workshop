@@ -3,9 +3,9 @@ fun main(args: Array<String>) {
     val name = readlnOrNull()
     if(name != null) {
         val nameLength = name.length
-        print("Hello", name, nameLength)
+        print(name = name, greeting = "Hello", excitationLevel = nameLength)
     } else {
-        print("Hi")
+        print(greeting = "Hi")
     }
 }
 
