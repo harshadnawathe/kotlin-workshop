@@ -6,4 +6,6 @@ class Loan(
     val rateOfInterest: Int
 ) {
     fun interest() = (principleAmount * periodInYears * rateOfInterest) / 100.0
+    fun totalAmount() = principleAmount + interest()
+
 }
