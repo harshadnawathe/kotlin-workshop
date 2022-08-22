@@ -6,4 +6,5 @@ class LoanAccount(
     val loan: Loan
 ) {
     fun amountPaid(monthNo: Int) = monthNo * loan.emi()
+    fun amountRemaining(monthNo: Int) = loan.totalAmount() - amountPaid(monthNo)
 }
