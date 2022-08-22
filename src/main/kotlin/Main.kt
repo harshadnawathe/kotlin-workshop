@@ -1,14 +1,14 @@
 fun main(args: Array<String>) {
-    print("Your name: ")
+    kotlin.io.print("Your name: ")
     val name = readlnOrNull()
     if(name != null) {
         val nameLength = name.length
         print("Hello", name, nameLength)
     } else {
-        print("Hi", "Stranger", 0)
+        print("Hi")
     }
 }
 
-fun print(greeting: String, name: String, excitationLevel: Int) {
+fun print(greeting: String, name: String = "Stranger", excitationLevel: Int = 0) {
     println("$greeting, $name${"!".repeat(excitationLevel)}")
 }
