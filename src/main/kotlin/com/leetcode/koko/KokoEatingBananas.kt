@@ -1,49 +1,30 @@
 package com.leetcode.koko
 
+import kotlin.math.ceil
+
 class KokoEatingBananas {
-
-    fun minEatingSpeed(piles: IntArray, h: Int): Int {
-        return binarySearch(piles, h)!!
+    fun minEatingSpeed(piles: IntArray, h: Int) = (1..piles.max()).search {
+        timeToEatAll(piles, it) <= h
     }
+    private fun timeToEatAll(piles: IntArray, k: Int) = piles.sumOf { pile -> timeToEat(pile, k) }
 
-    private fun linearSearch(piles: IntArray, h: Int): Int? {
-        for (currSpeed in 1..piles.max()) {
-            val time = timeToEatAll(piles, currSpeed)
-            if (time == h) {
-                return currSpeed
-            }
+    private fun timeToEat(pile: Int, k: Int) = ceil(pile.toDouble()/k)
+}
+
+fun IntRange.search(predicate: (Int) -> Boolean) : Int {
+    var left = this.first
+    var right = this.last
+
+    while(left < right) {
+        val mid = (left + right) / 2
+
+        if(!predicate(mid)) {
+            left = mid + 1
+        } else {
+            right = mid
         }
-        return null
     }
-
-    private fun binarySearch(piles: IntArray, h: Int) : Int {
-        var left = 1
-        var right = piles.max()
-
-        while (left < right) {
-            val currSpeed = (left + right) / 2
-
-            val time = timeToEatAll(piles, currSpeed)
-            if(time <= h) {
-                right = currSpeed
-            } else {
-                left = currSpeed + 1
-            }
-        }
-        return right
-    }
-
-    private fun timeToEatAll(piles: IntArray, k: Int): Int {
-        var timeToEatAll = 0
-        for (pile in piles) {
-            var timeToEatCurrentPile = pile / k
-            if (pile % k > 0) {
-                timeToEatCurrentPile += 1
-            }
-            timeToEatAll += timeToEatCurrentPile
-        }
-        return timeToEatAll
-    }
+    return right
 }
 
 fun main() {
