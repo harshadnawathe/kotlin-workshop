@@ -10,13 +10,13 @@ class KokoEatingBananas {
         for (currSpeed in 1..piles.max()) {
             val time = timeToEatAll(piles, currSpeed)
             if (time == h) {
-                return time
+                return currSpeed
             }
         }
         return null
     }
 
-    private fun binarySearch(piles: IntArray, h: Int) : Int? {
+    private fun binarySearch(piles: IntArray, h: Int) : Int {
         var left = 1
         var right = piles.max()
 
@@ -24,17 +24,13 @@ class KokoEatingBananas {
             val currSpeed = (left + right) / 2
 
             val time = timeToEatAll(piles, currSpeed)
-            if(time == h) {
-                return time
-            }
-
-            if(time < h) {
-                left = currSpeed + 1
-            } else {
+            if(time <= h) {
                 right = currSpeed
+            } else {
+                left = currSpeed + 1
             }
         }
-        return null
+        return right
     }
 
     private fun timeToEatAll(piles: IntArray, k: Int): Int {
