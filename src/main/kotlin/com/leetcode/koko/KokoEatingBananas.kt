@@ -45,3 +45,11 @@ class KokoEatingBananas {
         return timeToEatAll
     }
 }
+
+fun main() {
+    val solution = KokoEatingBananas()
+
+    println(solution.minEatingSpeed(intArrayOf(3,6,7,11), 8))
+    println(solution.minEatingSpeed(intArrayOf(30,11,23,4,20), 5))
+    println(solution.minEatingSpeed(intArrayOf(30,11,23,4,20), 6))
+}
